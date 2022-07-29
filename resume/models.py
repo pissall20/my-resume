@@ -7,13 +7,19 @@ class Skill(models.Model):
     skill = models.CharField(max_length=100)
     rating = models.IntegerField()
 
+    def __str__(self):
+        return self.skill
+
 
 class Education(models.Model):
     course = models.CharField(max_length=120)
     start_year = models.CharField(max_length=4)
     end_year = models.CharField(max_length=4, null=True, default="Present")
     school = models.CharField(max_length=120)
-    writeup = models.TextField(max_length=500)
+    writeup = models.TextField(max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.course
 
 
 class Experience(models.Model):
@@ -23,6 +29,9 @@ class Experience(models.Model):
     start_year = models.CharField(max_length=12)
     end_year = models.CharField(max_length=12, null=True, default="Present")
     experience_ul = models.TextField(max_length=1000)
+
+    def __str__(self):
+        return self.workplace
 
 
 class Service(models.Model):
