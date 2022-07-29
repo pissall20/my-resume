@@ -18,9 +18,10 @@ class Education(models.Model):
 
 class Experience(models.Model):
     designation = models.CharField(max_length=100)
-    workplace_city = models.CharField(max_length=200)
-    start_year = models.CharField(max_length=4)
-    end_year = models.CharField(max_length=4, null=True, default="Present")
+    workplace = models.CharField(max_length=200)
+    location = models.CharField(max_length=100)
+    start_year = models.CharField(max_length=12)
+    end_year = models.CharField(max_length=12, null=True, default="Present")
     experience_ul = models.TextField(max_length=1000)
 
 
