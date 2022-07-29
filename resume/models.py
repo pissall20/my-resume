@@ -16,6 +16,7 @@ class Education(models.Model):
     start_year = models.CharField(max_length=4)
     end_year = models.CharField(max_length=4, null=True, default="Present")
     school = models.CharField(max_length=120)
+    location = models.CharField(max_length=100)
     writeup = models.TextField(max_length=500, null=True, blank=True)
 
     def __str__(self):
@@ -28,7 +29,7 @@ class Experience(models.Model):
     location = models.CharField(max_length=100)
     start_year = models.CharField(max_length=12)
     end_year = models.CharField(max_length=12, null=True, default="Present")
-    experience_ul = models.TextField(max_length=1000)
+    experience_ul = models.TextField(max_length=2000)
 
     def __str__(self):
         return self.workplace

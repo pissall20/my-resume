@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
-from .models import Skill, Education
+from .models import Skill, Education, Experience
 
 
 # Create your views here.
@@ -10,6 +10,7 @@ def index(request):
     contact_form = ContactForm()
     skills_list = Skill.objects.all().order_by("-rating")
     education = Education.objects.all()
+    experience = Experience.objects.all()
     skill_divider = int(len(skills_list) / 2)
     skills = {
         "skill1": skills_list[:skill_divider],
@@ -18,7 +19,8 @@ def index(request):
     context = {
         "contact_form": contact_form,
         "skills": skills,
-        "education": education
+        "education": education,
+        "experience": experience
     }
     return render(request, 'resume/index.html', context)
 

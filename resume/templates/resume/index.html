@@ -151,9 +151,11 @@
 
             <div class="section-title">
                 <h2>Skills</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                    fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p>Siddhesh's expertise lies in synthesizing Machine learning, Predictive Analytics and Big data
+                    technologies into integrated solutions. He has excellent knowledge of Machine Learning, Mathematical
+                    Modeling and Operations Research. He is fluent with R, Python, C, Apache Spark, Docker, Web
+                    Developments, RDBMS and NoSQL databases. He has a deep understanding & exposure of the Big Data
+                    Ecosystem.</p>
             </div>
 
             <div class="row skills-content">
@@ -205,11 +207,10 @@
 
             <div class="section-title">
                 <h2>Resume</h2>
-                <p>Siddhesh's expertise lies in synthesizing Machine learning, Predictive Analytics and Big data
-                    technologies
-                    into integrated solutions. He has excellent knowledge of Machine Learning, Mathematical Modeling and
-                    Operations Research. He is fluent with R, Python, C, Apache Spark, Docker, Web Developments, RDBMS
-                    and NoSQL databases. He has a deep understanding & exposure of the Big Data Ecosystem.</p>
+                <p>Siddhesh has experience across different domains such as CPG, Insurance, Retail, Manufacturing,
+                    National Defense, Healthcare, Telecom. He has experience in designing and executing complex business
+                    problems and building highly scalable fault-tolerant systems. He has managed cross-functional
+                    teams to work in close collaboration with analytics, engineering and stakeholders</p>
             </div>
 
             <div class="row">
@@ -228,56 +229,25 @@
                     </div>
 
                     <h3 class="resume-title">Education</h3>
+                    {% for school in education %}
                     <div class="resume-item">
-                        <h4>Master of Fine Arts &amp; Graphic Design</h4>
-                        <h5>2015 - 2016</h5>
-                        <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                        <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero
-                            voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
+                        <h4>{{school.cource}}</h4>
+                        <h5>{{school.start_year}} - {{school.end_year}}</h5>
+                        <p><em>{{school.school}}, {{school.location}}</em></p>
+                        <p>{{school.writeup}}</p>
                     </div>
-                    <div class="resume-item">
-                        <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-                        <h5>2010 - 2014</h5>
-                        <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                        <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel
-                            ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur
-                            neque etlon sader mart dila</p>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div class="col-lg-6">
                     <h3 class="resume-title">Professional Experience</h3>
+                    {% for exp in experience %}
                     <div class="resume-item">
-                        <h4>Senior graphic design specialist</h4>
-                        <h5>2019 - Present</h5>
-                        <p><em>Experion, New York, NY </em></p>
-                        <ul>
-                            <li>Lead in the design, development, and implementation of the graphic, layout, and
-                                production communication materials
-                            </li>
-                            <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of
-                                the project.
-                            </li>
-                            <li>Supervise the assessment of all graphic materials in order to ensure quality and
-                                accuracy of the design
-                            </li>
-                            <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000
-                            </li>
-                        </ul>
+                        <h4>{{exp.designation}}</h4>
+                        <h5>{{exp.start_year}} - {{exp.end_year}}</h5>
+                        <p><em>{{exp.workplace}}, {{exp.location}} </em></p>
+                        {{exp.experience_ul | safe}}
                     </div>
-                    <div class="resume-item">
-                        <h4>Graphic design specialist</h4>
-                        <h5>2017 - 2018</h5>
-                        <p><em>Stepping Stone Advertising, New York, NY</em></p>
-                        <ul>
-                            <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and
-                                advertisements).
-                            </li>
-                            <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                            <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                            <li>Created 4+ design presentations and proposals a month for clients and account managers
-                            </li>
-                        </ul>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -784,6 +754,8 @@
     $('.facts').hide();
 
 })
+
+
 
 
 
