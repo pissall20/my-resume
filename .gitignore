@@ -59,7 +59,7 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
-db.sqlite3
+# db.sqlite3
 db.sqlite3-journal
 *.pyc
 __pycache__
@@ -133,10 +133,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.pyre
 
 # Personal
 staticfiles
 data.json
 bash_helpers
 .DS_Store
-resume/migrations
