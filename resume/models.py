@@ -53,3 +53,7 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Portfolio(models.Model):
+    pass
