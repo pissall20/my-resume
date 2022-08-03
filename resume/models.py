@@ -40,6 +40,8 @@ class Service(models.Model):
     description_text = models.TextField(max_length=2000)
     order = models.IntegerField(null=True)
     icon_img = models.ImageField(upload_to="service_icons/", blank=True, null=True)
+    icon_class_bx = models.CharField(max_length=20)
+
 
     def __str__(self):
         return self.heading_text
