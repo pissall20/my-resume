@@ -3,10 +3,6 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<html lang="en">
-
-
-<body>
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex flex-column justify-content-center">
@@ -270,27 +266,33 @@
 
             <div class="row">
                 <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                    <ul id="portfolio-flters">
+                    <ul id="portfolio-filters">
                         <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-app">App</li>
-                        <li data-filter=".filter-card">Card</li>
-                        <li data-filter=".filter-web">Web</li>
+                        {% for category in categories %}
+                        <li data-filter=".filter-{{ category.slug }}">{{ category.name }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                {% for work in portfolio %}
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-{{ work.category.slug }}">
                     <div class="portfolio-wrap">
-                        <img src="{% static 'resume/img/portfolio/cuddle.png' %}" class="img-fluid" alt="">
+                        {% if work.image %}
+                        <img src="{{ work.image.url}}" class="img-fluid" alt="">
+                        {% endif %}
                         <div class="portfolio-info">
-                            <h4>Crux Intelligence</h4>
+                            <h4>{{ work.name}}</h4>
                             <p>App</p>
                             <div class="portfolio-links">
-                                <a href="{% static 'resume/img/portfolio/cuddle.png' %}"
+                                {% if work.image %}
+                                <a href="{{ work.image.url}}"
                                    data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                   class="portfolio-lightbox" title="{{ work.name }}"><i class="bx bx-plus"></i></a>
+                                {% endif %}
                                 <a href="https://cruxintelligence.com/" class="portfolio-details-lightbox"
                                    data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                             </div>
@@ -298,55 +300,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="{% static 'resume/img/portfolio/eugenie-2.png' %}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Eugenie</h4>
-                            <p>App</p>
-                            <div class="portfolio-links">
-                                <a href="{% static 'resume/img/portfolio/eugenie-2.png' %}"
-                                   data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                <a href="https://eugenie.ai/" class="portfolio-details-lightbox"
-                                   data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-                        <img src="{% static 'resume/img/portfolio/fastaxhelp.png' %}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Fastaxhelp</h4>
-                            <p>Web</p>
-                            <div class="portfolio-links">
-                                <a href="{% static 'resume/img/portfolio/fastaxhelp.png' %}"
-                                   data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                                <a href="http://www.fastaxhelp.com/" class="portfolio-details-lightbox"
-                                   data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-<!--                <div class="col-lg-4 col-md-6 portfolio-item filter-card">-->
-<!--                    <div class="portfolio-wrap">-->
-<!--                        <img src="{% static 'resume/img/portfolio/portfolio-4.jpg' %}" class="img-fluid" alt="">-->
-<!--                        <div class="portfolio-info">-->
-<!--                            <h4>Card 2</h4>-->
-<!--                            <p>Card</p>-->
-<!--                            <div class="portfolio-links">-->
-<!--                                <a href="{% static 'resume/img/portfolio/portfolio-4.jpg' %}" data-gallery="portfolioGallery"-->
-<!--                                   class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>-->
-<!--                                <a href="portfolio-details.html" class="portfolio-details-lightbox"-->
-<!--                                   data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                {% endfor %}
             </div>
 
         </div>
@@ -570,9 +524,6 @@
     // $('.services').hide();
 
 })
-
-
-
 
 </script>
 
