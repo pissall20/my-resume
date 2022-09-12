@@ -281,19 +281,19 @@
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-{{ work.category.slug }}">
                     <div class="portfolio-wrap">
-                        {% if work.image %}
-                        <img src="{{ work.image.url}}" class="img-fluid" alt="">
+                        {% if work.image1 %}
+                        <img src="{{ work.image1.url }}" class="img-fluid" alt="">
                         {% endif %}
                         <div class="portfolio-info">
                             <h4>{{ work.name}}</h4>
-                            <p>App</p>
+                            <p>{{ work.category.name }}</p>
                             <div class="portfolio-links">
-                                {% if work.image %}
-                                <a href="{{ work.image.url}}"
+                                {% if work.image1 %}
+                                <a href="{{ work.image1.url }}"
                                    data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="{{ work.name }}"><i class="bx bx-plus"></i></a>
+                                   class="portfolio-lightbox" title="{{ work.project_desc }}"><i class="bx bx-plus"></i></a>
                                 {% endif %}
-                                <a href="https://cruxintelligence.com/" class="portfolio-details-lightbox"
+                                <a href="{% url 'portfolio' work.id %}" class="portfolio-details-lightbox"
                                    data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                             </div>
                         </div>
