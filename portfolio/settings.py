@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-&6sbpne!9hinl!+v-oy=g^livbc8!r32x7g576l&oo-xy-*pjs
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Allow xframe_options_exempt
 X_FRAME_OPTIONS = 'SAMEORIGIN'
