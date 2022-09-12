@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.text import slugify
 # Create your models here.
 
 
@@ -56,8 +56,12 @@ class Contact(models.Model):
 
 
 class ProjectCategory(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, default="Websites")
     slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(ProjectCategory, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -67,8 +71,8 @@ class Portfolio(models.Model):
     name = models.CharField(max_length=100)
     link = models.TextField(max_length=2000, blank=True, null=True, default="#")
 
-    category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
-    project_desc = models.TextField(max_length=5000)
+    category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE, default="Others")
+    project_desc = models.TextField(max_length=5000, null=True)
     date = models.DateField(null=True, auto_now_add=True)
     client = models.CharField(max_length=200, null=True, blank=True)
     order = models.IntegerField(default=999)
