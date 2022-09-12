@@ -57,5 +57,29 @@ class Contact(models.Model):
         return self.email
 
 
+class ProjectCategory(models.Model):
+    name = models.CharField(max_length=200)
+    slug = models.SlugField()
+
+    def __str__(self):
+        return self.name
+
+
 class Portfolio(models.Model):
-    pass
+    name = models.CharField(max_length=100)
+    link = models.TextField(max_length=2000, blank=True, null=True, default="#")
+
+    category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
+    project_desc = models.TextField(max_length=5000)
+    date = models.DateField(null=True, auto_now_add=True)
+    client = models.CharField(max_length=200, null=True, blank=True)
+    order = models.IntegerField(default=999)
+    # Images
+    image1 = models.ImageField(upload_to="project_img/", blank=True, null=True)
+    image2 = models.ImageField(upload_to="project_img/", blank=True, null=True)
+    image3 = models.ImageField(upload_to="project_img/", blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+

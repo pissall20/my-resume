@@ -1,0 +1,76 @@
+{% extends 'resume/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<main id="main">
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper">
+                        <div class="swiper-wrapper align-items-center">
+                            <!--Portfolio Images -->
+                            <div class="swiper-slide">
+                                {% if portfolio.image1 %}
+                                <img src="{{ portfolio.image1.url }}" alt="">
+                                {% endif %}
+                            </div>
+
+                            <div class="swiper-slide">
+                                {% if portfolio.image2 %}
+                                <img src="{{ portfolio.image2.url }}" alt="">
+                                {% endif %}
+                            </div>
+
+                            <div class="swiper-slide">
+                                {% if portfolio.image3 %}
+                                <img src="{{ portfolio.image3.url }}" alt="">
+                                {% endif %}
+                            </div>
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <!--Portfolio Information -->
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                        <h3>Project information</h3>
+                        <ul>
+                            <li><strong>Category</strong>: {{ portfolio.category.name}}</li>
+                            <li><strong>Client</strong>: {{ portfolio.client }}</li>
+                            <li><strong>Project date</strong>: {{ portfolio.date|date:'d M, Y'}} </li>
+                            <li><strong>Project URL</strong>: <a href="#">{{ portfolio.link }}</a></li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-description">
+                        <h2>{{ portfolio.name }}</h2>
+                        <p>{{ portfolio.project_desc }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
+
+{% block page_js %}
+<script type='text/javascript'>
+
+  $(document).ready(function(){
+    $('#header').hide();
+    $('#footer').hide();
+  });
+
+ </script>
+{% endblock page_js %}
+
+{% endblock content %}
