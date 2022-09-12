@@ -1,19 +1,12 @@
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
-from django.views.decorators.clickjacking import xframe_options_exempt
 
 from .forms import ContactForm
 from .models import Skill, Education, Experience, Portfolio, ProjectCategory
 
 
 # Create your views here.
-
-
-@xframe_options_exempt
-def ok_to_load_in_a_frame(request):
-    return HttpResponse("This page is safe to load in a frame on any site.")
-
 
 def index(request):
     contact_form = ContactForm()
